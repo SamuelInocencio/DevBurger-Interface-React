@@ -6,7 +6,7 @@ import Logo from '../../assets/logo.svg';
 
 import { Button } from '../../components/Button';
 import {
-   Container,
+  Container,
   Form,
   InputContainer,
   LeftContainer,
@@ -16,21 +16,27 @@ import {
 
 export function Login() {
   const schema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(6).required(),
-  })
-  .required()
+    .object({
+      email: yup
+        .string()
+        .email('Digite um email válido')
+        .required('O email é obrigatório'),
+      password: yup
+        .string()
+        .min(6, 'A senha deve ter pelo menos 6 caracteres')
+        .required('Digite uma senha válida'),
+    })
+    .required();
 
-    const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-  })
-  const onSubmit = (data) => console.log(data)
-  
+  });
+  const onSubmit = (data) => console.log(data);
+
   return (
     <Container>
       <LeftContainer>
@@ -45,12 +51,18 @@ export function Login() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
             <label>Email</label>
-            <input type="email" {...register("email")} placeholder="Digite seu email" />
+            <input
+              type="email"
+              {...register('email')}
+              placeholder="Digite seu email"
+            />
+            <p>{errors?.email?.message}</p>
           </InputContainer>
 
           <InputContainer>
             <label>Senha</label>
-            <input type="password" {...register("password")} />
+            <input type="password" {...register('password')} />
+            <p>{errors?.password?.message}</p>
           </InputContainer>
 
           <Button type="submit">Entrar</Button>
