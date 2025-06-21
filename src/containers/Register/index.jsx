@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { api } from '../../services/api';
@@ -12,11 +13,13 @@ import {
   Form,
   InputContainer,
   LeftContainer,
+  Link,
   RightContainer,
   Title,
 } from './styles';
 
 export function Register() {
+  const navigate = useNavigate();
   const schema = yup
     .object({
       name: yup.string().required('O nome é obrigatório'),
@@ -43,18 +46,32 @@ export function Register() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const response = await toast.promise(
-      api.post('/users', {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-      }),
-      {
-        pending: 'Verificando seus dados',
-        success: 'Cadastro realizado com sucesso!',
-        error: 'Ops, algo deu errado! Tente novamente.',
-      },
-    );
+    try {
+      const { status } = await api.post(
+        '/users',
+        {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        },
+        {
+          validateStatus: () => true,
+        },
+      );
+      console.log(status);
+      if (status === 200 || status === 201) {
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+        toast.success('Usuário cadastrado com sucesso!');
+      } else if (status === 409) {
+        toast.error('Email já cadastrado! Faça o login para continuar');
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      toast.error('Falha no Sistema! Tente novamente mais tarde');
+    }
   };
 
   return (
@@ -104,7 +121,7 @@ export function Register() {
           <Button type="submit">Criar Conta</Button>
         </Form>
         <p>
-          Já possui conta? <a>Clique aqui.</a>
+          Já possui conta? <Link to="/">Clique aqui.</Link>
         </p>
       </RightContainer>
     </Container>
