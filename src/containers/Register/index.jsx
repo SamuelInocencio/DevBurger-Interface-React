@@ -121,7 +121,7 @@ export function Register() {
           <Button type="submit">Criar Conta</Button>
         </Form>
         <p>
-          Já possui conta? <Link to="/">Clique aqui.</Link>
+          Já possui conta? <Link to="/login">Clique aqui.</Link>
         </p>
       </RightContainer>
     </Container>
