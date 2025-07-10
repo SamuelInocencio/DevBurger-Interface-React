@@ -22,9 +22,7 @@ h1 {
 export const Container = styled.section`
 background: linear-gradient(rgba(255,255,255, 0.5),rgba(255,255,255, 0.5)),
 url('${Background}');
-height: 500px;
+height: 100vh;
 `;
 
-export const Content = styled.div`
-padding-bottom: 70px;
-`;
+
