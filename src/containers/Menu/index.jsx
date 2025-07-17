@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { set } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { CardProduct } from '../../components/CardProduct';
 import { api } from '../../services/api';
 import { formatPrice } from '../../utils/formatPrice';
@@ -10,15 +11,26 @@ import {
   Container,
   ProductsContainer,
 } from './styles';
-import { set } from 'react-hook-form';
 
 export function Menu() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(0);
 
   const navigate = useNavigate();
+
+  const { search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const categoryId = +queryParams.get('categoria');
+
+    if (categoryId) {
+      return categoryId;
+    }
+    return 0;
+  });
 
   useEffect(() => {
     async function loadCategories() {
@@ -42,18 +54,16 @@ export function Menu() {
     loadProducts();
   }, []);
 
-  
   useEffect(() => {
-  if(activeCategory === 0) {
-    setFilteredProducts(products);
-  } else {
-    const newFilteredProducts = products.filter(
-      (product) => product.category_id === activeCategory
-    );
-    setFilteredProducts(newFilteredProducts);
-  }
-}, [products, activeCategory]);
-
+    if (activeCategory === 0) {
+      setFilteredProducts(products);
+    } else {
+      const newFilteredProducts = products.filter(
+        (product) => product.category_id === activeCategory,
+      );
+      setFilteredProducts(newFilteredProducts);
+    }
+  }, [products, activeCategory]);
 
   return (
     <Container>
@@ -76,7 +86,7 @@ export function Menu() {
               navigate(
                 {
                   pathname: '/cardapio',
-                  search: `'?categoria=${category.id}'`,
+                  search: `?categoria=${category.id}`,
                 },
                 {
                   replace: true,
