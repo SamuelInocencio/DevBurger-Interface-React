@@ -3,6 +3,7 @@ import { set, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
+import { useUser } from '../../hooks/UserContext';
 import { api } from '../../services/api';
 
 import Logo from '../../assets/logo.svg';
@@ -20,6 +21,7 @@ import {
 
 export function Login() {
   const navigate = useNavigate();
+  const { putUserData } = useUser();
   const schema = yup
     .object({
       email: yup
@@ -41,9 +43,7 @@ export function Login() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const {
-      data: { token },
-    } = await toast.promise(
+    const { data: userData } = await toast.promise(
       api.post('/session', {
         email: data.email,
         password: data.password,
@@ -61,7 +61,7 @@ export function Login() {
         error: 'Email ou Senha Incorretos',
       },
     );
-    localStorage.setItem('token', token);
+    putUserData(userData);
   };
 
   return (

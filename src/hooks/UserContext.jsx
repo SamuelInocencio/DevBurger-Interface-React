@@ -3,10 +3,18 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({ id: 1, name: 'John Doe' });
+  const [userInfo, setUserInfo] = useState({});
+
+  const putUserData = (userInfo) => {
+    setUserInfo(userInfo);
+
+    localStorage.setItem('devburger:userData', JSON.stringify(userInfo));
+  };
 
   return (
-    <UserContext.Provider value={{ userInfo }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userInfo, putUserData }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
