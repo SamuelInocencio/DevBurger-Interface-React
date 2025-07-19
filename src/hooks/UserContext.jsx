@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { set } from 'react-hook-form';
 
 const UserContext = createContext({});
 
@@ -11,8 +12,20 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('devburger:userData', JSON.stringify(userInfo));
   };
 
+  const logout = () => {
+    setUserInfo({});
+    localStorage.removeItem('devburger:userData');
+  };
+
+  useEffect(() => {
+    const userInfoLocalStorage = localStorage.getItem('devburger:userData');
+    if (userInfoLocalStorage) {
+      setUserInfo(JSON.parse(userInfoLocalStorage));
+    }
+  }, []);
+
   return (
-    <UserContext.Provider value={{ userInfo, putUserData }}>
+    <UserContext.Provider value={{ userInfo, putUserData, logout }}>
       {children}
     </UserContext.Provider>
   );
