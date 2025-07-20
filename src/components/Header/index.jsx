@@ -1,31 +1,45 @@
-import { Container, HeaderLink, LinkContainer, Logout, Navigation, Options, Profile } from "./styles";
+import { ShoppingCart, UserCircle } from '@phosphor-icons/react';
+
+import {
+  Container,
+  Content,
+  HeaderLink,
+  LinkContainer,
+  Logout,
+  Navigation,
+  Options,
+  Profile,
+} from './styles';
+
+
 
 export function Header() {
   return (
-   <Container>
-    <Navigation>
+    <Container>
+      <Content>
+      <Navigation>
         <div>
-            <HeaderLink>
-                Home
-            </HeaderLink>
-             <HeaderLink>
-                Cardápio
-            </HeaderLink>
+          <HeaderLink>Home</HeaderLink>
+          <HeaderLink>Cardápio</HeaderLink>
         </div>
-    </Navigation>
-    <Options>
+      </Navigation>
+      <Options>
         <Profile>
-            <div>
-                <p>Olá, <span>Samuel</span></p>
-                <Logout>Sair</Logout>
-            </div>
+          <UserCircle color='#fff' size={24} />
+          <div>
+            <p>
+              Olá, <span>Samuel</span>
+            </p>
+            <Logout>Sair</Logout>
+          </div>
         </Profile>
-    </Options>
-    <LinkContainer>
-    <HeaderLink>
-        Carrinho
-    </HeaderLink>
-    </LinkContainer>
-   </Container>
+        <LinkContainer>
+      <ShoppingCart color="#fff" size={24} />
+        <HeaderLink>Carrinho</HeaderLink>
+      </LinkContainer>
+      </Options>
+      
+      </Content>
+    </Container>
   );
 }
