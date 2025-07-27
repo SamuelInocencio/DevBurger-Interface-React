@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Login } from '../containers/Login';
-import { Register } from '../containers/Register';
 import { Home } from '../containers/Home';
+import { Login } from '../containers/Login';
 import { Menu } from '../containers/Menu';
+import { Register } from '../containers/Register';
 
-import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 import { Cart } from '../containers/Cart';
 
 export const router = createBrowserRouter([
@@ -14,9 +14,9 @@ export const router = createBrowserRouter([
     path: '/',
     element: (
       <>
-      <Header />
-      <Home />
-      < Footer />
+        <Header />
+        <Home />
+        <Footer />
       </>
     ),
   },
@@ -28,11 +28,17 @@ export const router = createBrowserRouter([
     path: '/cadastro',
     element: <Register />,
   },
-   {
+  {
     path: '/cardapio',
-    element: <Menu />,
+    element: (
+      <>
+        <Header />
+        <Menu />
+        <Footer />
+      </>
+    ),
   },
-   {
+  {
     path: '/carrinho',
     element: <Cart />,
   },

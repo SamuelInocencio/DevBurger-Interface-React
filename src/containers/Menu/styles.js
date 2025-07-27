@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import BannerHamburger from '../../assets/banner-hamburger.svg';
-import Background from '../../assets/background.svg';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Background from '../../assets/background.svg';
+import BannerHamburger from '../../assets/banner-hamburger.svg';
 
 export const Container = styled.div`
 width: 100%;
@@ -12,10 +12,10 @@ background: linear-gradient(rgba(255,255,255, 0.5),rgba(255,255,255, 0.5)),
 url('${Background}');
 
 h1 {
-    font-family: 'Road Rage', sans-serif;
+  font-family: 'Road Rage', sans-serif;
   font-size: 80px;
   line-height: 65px;
-position: absolute;
+  position: absolute;
   color: #fff;
 
   right: 20%;
@@ -54,13 +54,13 @@ export const CategoryButton = styled(Link)`
 text-decoration: none;
 cursor: pointer;
 background: none;
-color: ${props => props.$isActiveCategory ? '#9758a6' : '#9a9a9d'};
+color: ${(props) => (props.$isActiveCategory ? '#9758a6' : '#9a9a9d')};
 font-size: 24px;
 font-weight: 500;
 padding-bottom: 5px;
 line-height: 20px;
 border: none;
-border-bottom: ${ props => props.$isActiveCategory && '3px solid #696969'};
+border-bottom: ${(props) => props.$isActiveCategory && '3px solid #696969'};
 `;
 
 export const ProductsContainer = styled.div`

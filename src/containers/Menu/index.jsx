@@ -61,6 +61,7 @@ export function Menu() {
       const newFilteredProducts = products.filter(
         (product) => product.category_id === activeCategory,
       );
+
       setFilteredProducts(newFilteredProducts);
     }
   }, [products, activeCategory]);
@@ -81,7 +82,7 @@ export function Menu() {
         {categories.map((category) => (
           <CategoryButton
             key={category.id}
-            $isActiveCategory={category.id === activeCategory}
+            $isActiveCategory={category.id === activeCategory} //Utilizar o sinal $ ao início da propriedade que será utilizada somente pelo styled components
             onClick={() => {
               navigate(
                 {

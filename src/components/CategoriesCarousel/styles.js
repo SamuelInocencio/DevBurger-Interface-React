@@ -16,6 +16,7 @@ export const Container = styled.div`
 }
 
 padding-left: 30px;
+cursor: grab;
 `;
 
 export const Title = styled.h2`
