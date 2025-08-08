@@ -18,6 +18,7 @@ export function CartItems() {
           <Table.Th>Preço</Table.Th>
           <Table.Th>Quantidade</Table.Th>
           <Table.Th>Total</Table.Th>
+          <Table.Th></Table.Th>
         </Table.Tr>
       </Table.Header>
 
