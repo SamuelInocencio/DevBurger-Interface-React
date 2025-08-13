@@ -9,9 +9,12 @@ import { router } from './routes';
 import AppProvider from './hooks';
 import GlobalStyle from './styles/globalStyles';
 import stripePromise from './config/stripeConfig';
+import { ThemeProvider } from 'styled-components';
+import {standardTheme} from './styles/Themes/standard.js';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider theme={standardTheme}>
     <AppProvider>
       <Elements stripe={stripePromise}>
         <RouterProvider router={router} />
@@ -19,5 +22,6 @@ createRoot(document.getElementById('root')).render(
       <GlobalStyle />
       <ToastContainer />
     </AppProvider>
+    </ThemeProvider>
   </StrictMode>,
 );
