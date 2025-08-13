@@ -38,7 +38,7 @@ width: 100%;
 position: relative;
 
 background:url('${BannerHamburger}') no-repeat;
-background-color: #1f1f1f;
+background-color: ${(props) => props.theme.mainBlack};
 background-position: center;
 background-size: cover;
 `;

@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import Background from '../../assets/background.svg';
 import Texture from '../../assets/texture.svg';
-
 
 export const Container = styled.div`
 width: 100%;
@@ -13,7 +12,7 @@ min-height: 100vh;
 
 export const Banner = styled.div`
 background: url('${Texture}') no-repeat;
-background-color: #1f1f1f;
+background-color: ${(props) => props.theme.mainBlack};
 background-size: cover;
 background-position: center;
 display: flex;
@@ -56,4 +55,3 @@ max-width: 1280px;
 padding: 40px;
 margin: 0 auto;
 `;
-

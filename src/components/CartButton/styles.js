@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerButton = styled.button`
 background-color: #9758a6;
@@ -13,3 +13,4 @@ color: #fff;
     background-color: #6f357c;
 }
 `;
+
