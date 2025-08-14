@@ -1,13 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 
 import {
-  Admin,
-  Cart,
+    Cart,
   Checkout,
   CompletePayment,
+  EditProduct,
   Home,
   Login,
   Menu,
+  NewProduct,
+  Orders,
+  Products,
   Register,
 } from '../containers';
 
@@ -26,7 +29,10 @@ export function Router() {
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="/admin/home" element={<Admin />}></Route>
+        <Route path="/admin/pedidos" element={<Orders />}></Route>
+        <Route path="/admin/editar-produto" element={<EditProduct />}></Route>
+        <Route path="/admin/novo-produto" element={<NewProduct />}></Route>
+        <Route path="/admin/produtos" element={<Products />}></Route>
       </Route>
 
       <Route path="/login" element={<Login />} />
