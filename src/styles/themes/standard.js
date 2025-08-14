@@ -1,5 +1,5 @@
 export const standardTheme = {
-  purple: '#${(props) => props.theme.purple}',
+  purple: '#9758a6',
   darkPurple: '#5c2669',
   secondDarkPurple: '#6f357c',
   orange: '#ff8c05',
