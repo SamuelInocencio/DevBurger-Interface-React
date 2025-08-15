@@ -20,7 +20,7 @@ import {api} from '../../../services/api';
 import { Orders } from '.';
 
 export function Row({row, setOrders, orders}) {
-    //const { row } = props;
+
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
