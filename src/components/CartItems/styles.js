@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ProductImage = styled.img`
     width: 80%;
@@ -17,14 +17,14 @@ export const ButtonGroup = styled.div`
         justify-content: center;
         height: 30px;
         width: 30px;
-        color: #fff;
+        color: ${(props) => props.theme.white};
         border-radius: 4px;
-        background-color:#9758a6;
+        background-color:${(props) => props.theme.purple};
         transition: background-color 0.3s;
         border: none;
 
         &:hover {
-            background-color: #6f357c;
+            background-color: ${(props) => props.theme.secondDarkPurple};
         }
     }
 `;
@@ -39,7 +39,7 @@ export const EmptyCart = styled.p`
 export const TotalPrice = styled.p`
     font-weight: bold;
 
-`
+`;
 
 export const TrashImage = styled.img`
     width: 20px;
