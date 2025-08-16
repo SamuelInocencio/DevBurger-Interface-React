@@ -76,11 +76,11 @@ export function Orders() {
         if (activeStatus === 0){
             setfilteredOrders(orders);
         }else{
-            const statusIndex = OrderStatusOptions.findIndex ((item) => item.id === activeStatus ) //pega o index do status ativo
+            const statusIndex = OrderStatusOptions.findIndex ((item) => item.id === activeStatus )
 
             
             const newFiltredOrders =  orders.filter(
-                (order) => order.status === OrderStatusOptions[statusIndex].value //filtra os pedidos de acordo com o status ativo
+                (order) => order.status === OrderStatusOptions[statusIndex].value 
             )
 
             console.log(newFiltredOrders);
@@ -97,7 +97,7 @@ export function Orders() {
                     <FilterOption 
                     key={status.id}
                     onClick={()=> handleStatus(status)}
-                    $isActiveStatus={activeStatus === status.id} //verifica se o status é o ativo
+                    $isActiveStatus={activeStatus === status.id} 
                     >
                     {status.label}
                     
