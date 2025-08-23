@@ -2,7 +2,7 @@ import { Container } from "./styles";
 
 export function Footer(){
 
-    const yearDate = new Date().getFullYear(); //pega o ano atual
+    const yearDate = new Date().getFullYear(); 
 
     return(
         <Container>

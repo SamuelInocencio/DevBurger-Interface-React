@@ -3,12 +3,18 @@ import { useCart } from '../../hooks/CartContext';
 import { formatPrice } from '../../utils/formatPrice';
 import { Table } from '../index';
 
-import { ButtonGroup, EmptyCart, ProductImage, TotalPrice, TrashImage } from './styles';
+import {
+  ButtonGroup,
+  EmptyCart,
+  ProductImage,
+  TotalPrice,
+  TrashImage,
+} from './styles';
 
 export function CartItems() {
-  const { cartProducts, decreaseProduct, increaseProduct,deleteProduct } = useCart();
+  const { cartProducts, decreaseProduct, increaseProduct, deleteProduct } =
+    useCart();
 
-  console.log(cartProducts);
   return (
     <Table.Root>
       <Table.Header>
@@ -21,7 +27,6 @@ export function CartItems() {
           <Table.Th></Table.Th>
         </Table.Tr>
       </Table.Header>
-
       <Table.Body>
         {cartProducts?.length ? (
           cartProducts.map((product) => (
