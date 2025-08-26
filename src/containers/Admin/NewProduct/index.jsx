@@ -26,7 +26,7 @@ const schema = yup.object({
     .positive()
     .required('digite o preço do produto')
     .typeError('Digite o preço do produto'),
-  categoty: yup.object().required('Selecione uma categoria'),
+  category: yup.object().required('Selecione uma categoria'),
   offer: yup.boolean(),
   file: yup
     .mixed()
@@ -76,7 +76,7 @@ export function NewProduct() {
 
     newFormData.append('name', data.name);
     newFormData.append('price', data.price * 100);
-    newFormData.append('category_id', data.categoty.id);
+    newFormData.append('category_id', data.category.id);
     newFormData.append('file', data.file[0]);
     newFormData.append('offer', data.offer);
 
@@ -142,7 +142,7 @@ export function NewProduct() {
                 />
               )}
             />
-            <ErrorMessage>{errors.categoty?.message}</ErrorMessage>
+            <ErrorMessage>{errors.category?.message}</ErrorMessage>
           </InputGroup>
 
           <InputGroup>
